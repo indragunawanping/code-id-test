@@ -1,0 +1,4 @@
+.CancelButton, .AddButton{
+    border-radius: 8px !important;
+    width: 100px !important;
+}
