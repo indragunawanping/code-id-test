@@ -1,4 +1,8 @@
-.CancelButton, .AddButton{
+.ErrorMessage {
+    color: #DB2828;
+}
+
+.CancelButton, .AddButton {
     border-radius: 8px !important;
     width: 100px !important;
 }

@@ -8,17 +8,17 @@ import LoadingComponent from "../common/LoadingComponent";
 interface HomePageProps {
   contacts: Contact[];
   isFetchingContact: boolean;
+  handleContactClick: (contactId: string | undefined) => void;
   handleAddButtonClick: () => void;
 }
 
 const HomePage: React.FC<HomePageProps> = (props: HomePageProps) => {
-  console.log('isFetchingContact: ', props.isFetchingContact);
   const renderContactList = () => {
     let contactList: JSX.Element[] = [];
 
     for (const contact of props.contacts) {
       contactList.push(
-        <List.Item key={contact.id}>
+        <List.Item onClick={() => props.handleContactClick(contact.id)}>
           <Image avatar src={contact.photo}/>
           <List.Content>
             <List.Header>{contact.firstName} {contact.lastName}</List.Header>

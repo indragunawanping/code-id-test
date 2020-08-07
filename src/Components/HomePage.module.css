@@ -5,28 +5,31 @@
 }
 
 .ContactContainer {
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 0 30px;
 }
 
 .Logo {
-    width: 150px;
-    margin: 50px auto;
+    height: 30vh;
+    padding: 50px 0;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
 }
 
+.ContactList{
+    overflow: auto;
+    height: 50vh;
+    padding-right: 20px !important;
+}
+
 .Float{
-    position:fixed;
-    width:60px;
-    height:60px;
-    bottom:40px;
-    right:40px;
-    background-color:#0C9;
-    color:#FFF;
-    border-radius:50px;
-    text-align:center;
-    box-shadow: 2px 2px 3px #999;
+    position: fixed;
+    width: 7vh;
+    height: 7vh;
+    bottom: 5vh;
+    right: 5vh;
+    color: #FFF;
 }

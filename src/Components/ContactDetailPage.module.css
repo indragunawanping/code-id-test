@@ -1,0 +1,48 @@
+@media (min-width: 500px) {
+    .ContactContainer {
+        max-width: 50%;
+    }
+}
+
+.ContactContainer {
+    margin: 0 auto !important;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ContactDetail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Logo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.Name {
+    font-size: 40px;
+    margin-top: 50px;
+    font-weight: 500;
+}
+
+.Age {
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+.Buttons {
+    margin: 25px 0 25px 0;
+    display: flex !important;
+    justify-content: space-around !important;
+}
+
+.Buttons Button {
+    margin: 25px 12px 0 25px !important;
+}

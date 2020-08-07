@@ -1,7 +1,7 @@
 export interface State {
   data: DataState;
-  // communication: CommunicationState;
-  // control: ControlState;
+  communication: CommunicationState;
+  control: ControlState;
   session: SessionState;
 }
 
@@ -27,7 +27,7 @@ export interface SessionState {
 }
 
 export interface Contact {
-  id: string,
+  id?: string,
   firstName: string,
   lastName: string,
   age: number,
