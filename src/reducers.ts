@@ -1,9 +1,4 @@
-import {
-  CommunicationState,
-  ControlState,
-  DataState, SessionState,
-  State
-} from "./state";
+import { CommunicationState, ControlState, DataState, SessionState, State } from "./state";
 import { combineReducers } from "redux";
 import { initialCommunicationState, initialControlState, initialDataState, initialSessionState } from "./initialStates";
 import * as actionsContact from "./actionsContact";
@@ -15,13 +10,6 @@ export const dataReducer = (state: DataState = initialDataState, action: any) =>
     case actionsContact.UPDATE_CONTACT_LIST:
       return Object.assign({}, state, {
         contacts: action.payload
-      });
-    case actionsContact.ADD_NEW_CONTACT:
-      return Object.assign({}, state, {
-        contacts: [
-          ...state.contacts,
-          action.payload
-        ]
       });
     default:
       return state;
@@ -52,6 +40,18 @@ export const sessionReducer = (state: SessionState = initialSessionState, action
     case actionsContact.UPDATE_STORING_CONTACT_STATUS:
       return Object.assign({}, state, {
         isStoringContact: action.payload
+      });
+    case actionsContact.UPDATE_FETCHING_CONTACT_DETAIL_STATUS:
+      return Object.assign({}, state, {
+        isFetchingContactDetail: action.payload
+      });
+    case actionsContact.UPDATE_UPDATING_CONTACT_STATUS:
+      return Object.assign({}, state, {
+        isUpdatingContact: action.payload
+      });
+    case actionsContact.UPDATE_DELETING_CONTACT_STATUS:
+      return Object.assign({}, state, {
+        isDeletingContact: action.payload
       });
     default:
       return state;

@@ -4,7 +4,7 @@ import HomePage from "../Components/HomePage";
 import { fetchContactList, storingContact } from "../actionsContact";
 import { connect, useDispatch } from "react-redux";
 import { Contact, State } from "../state";
-import AddContactModal from "../modals/AddContactModal";
+import UpdateContactModal from "../modals/UpdateContactModal";
 
 const mapStateToProps = (state: State) => {
   return {
@@ -36,7 +36,6 @@ const HomePageContainer: React.FC<HomePageContainerProps> = (props: HomePageCont
 
   useEffect(() => {
     dispatch(fetchContactList());
-
   }, [dispatch]);
 
   const handleFirstNameChange = (event: FormEvent<HTMLInputElement>) => {
@@ -59,16 +58,12 @@ const HomePageContainer: React.FC<HomePageContainerProps> = (props: HomePageCont
 
   const handleContactClick = (contactId: string | undefined) => {
     if (contactId) {
-      history.push("/code-id-test/".concat(contactId));
+      history.push("/".concat(contactId));
     }
   };
 
   const handleAddButtonClick = () => {
     setIsAddContactModalOpen(true);
-  };
-
-  const handleCancelButtonClick = () => {
-    setIsAddContactModalOpen(false)
   };
 
   const handleAddContactButtonClick = useCallback(
@@ -77,8 +72,12 @@ const HomePageContainer: React.FC<HomePageContainerProps> = (props: HomePageCont
         setErrorMessage('First Name length must be at least 3 characters long.');
       } else if (lastName.length < 3) {
         setErrorMessage('Last Name length must be at least 3 characters long.');
-      } else if (age < 1) {
-        setErrorMessage('Age must be larger than or equal to 1.');
+      } else if (!(/^(?!-)(?!.*-)[A-Za-z0-9-]+(?<!-)$/.test(firstName))) {
+        setErrorMessage('First Name must only contain alpha-numeric characters.');
+      } else if (!(/^(?!-)(?!.*-)[A-Za-z0-9-]+(?<!-)$/.test(lastName))) {
+        setErrorMessage('Last Name must only contain alpha-numeric characters.');
+      } else if (age < 1 || age > 200) {
+        setErrorMessage('Age must be at least 1 and not larger than 200.');
       } else if (photoUrl.length === 0) {
         setErrorMessage('Photo (URL) is not allowed to be empty.');
       } else {
@@ -89,6 +88,10 @@ const HomePageContainer: React.FC<HomePageContainerProps> = (props: HomePageCont
     [dispatch, firstName, lastName, age, photoUrl]
   );
 
+  const handleCancelButtonClick = () => {
+    setIsAddContactModalOpen(false)
+  };
+
   return (
     <React.Fragment>
       <HomePage contacts={contacts}
@@ -96,19 +99,20 @@ const HomePageContainer: React.FC<HomePageContainerProps> = (props: HomePageCont
                 handleContactClick={handleContactClick}
                 handleAddButtonClick={handleAddButtonClick}
       />
-      <AddContactModal isAddContactModalOpen={isAddContactModalOpen}
-                       firstName={firstName}
-                       lastName={lastName}
-                       age={age}
-                       photoUrl={photoUrl}
-                       errorMessage={errorMessage}
-                       isStoringContact={isStoringContact}
-                       handleFirstNameChange={handleFirstNameChange}
-                       handleLastNameChange={handleLastNameChange}
-                       handleAgeChange={handleAgeChange}
-                       handlePhotoUrlChange={handlePhotoUrlChange}
-                       handleCancelButtonClick={handleCancelButtonClick}
-                       handleAddContactButtonClick={handleAddContactButtonClick}/>
+      <UpdateContactModal updateContactModalOpen={isAddContactModalOpen}
+                          updateActionType={'Add'}
+                          firstName={firstName}
+                          lastName={lastName}
+                          age={age}
+                          photoUrl={photoUrl}
+                          errorMessage={errorMessage}
+                          isUpdatingContact={isStoringContact}
+                          handleFirstNameChange={handleFirstNameChange}
+                          handleLastNameChange={handleLastNameChange}
+                          handleAgeChange={handleAgeChange}
+                          handlePhotoUrlChange={handlePhotoUrlChange}
+                          handleCancelButtonClick={handleCancelButtonClick}
+                          handleUpdateContactButtonClick={handleAddContactButtonClick}/>
     </React.Fragment>
   )
 };

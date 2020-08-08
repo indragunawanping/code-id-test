@@ -9,8 +9,8 @@ function App() {
   return (
     <React.Fragment>
       <Switch>
-        <Route exact path="/code-id-test/" component={HomePageContainer}/>
-        <Route exact path="/code-id-test/:contactId" component={ContactDetailPageContainer}/>
+        <Route exact path="/" component={HomePageContainer}/>
+        <Route exact path="/:contactId" component={ContactDetailPageContainer}/>
       </Switch>
       <ErrorModalContainer/>
     </React.Fragment>

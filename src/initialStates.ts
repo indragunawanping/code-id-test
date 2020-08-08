@@ -30,5 +30,6 @@ export const initialSessionState: SessionState = {
   isFetchingContact: false,
   isStoringContact: false,
   isUpdatingContact: false,
-  isDeletingContact: false
+  isDeletingContact: false,
+  isFetchingContactDetail: false
 };

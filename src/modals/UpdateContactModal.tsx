@@ -1,28 +1,29 @@
 import React, { FormEvent } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
-import styles from "./AddContactModal.module.css";
+import styles from "./UpdateContactModal.module.css";
 
 interface AddContactModalProps {
-  isAddContactModalOpen: boolean;
+  updateContactModalOpen: boolean;
+  updateActionType: string;
   firstName: string;
   lastName: string;
   age: number;
   photoUrl: string;
   errorMessage: string;
-  isStoringContact: boolean;
+  isUpdatingContact: boolean;
   handleFirstNameChange: (event: FormEvent<HTMLInputElement>) => void;
   handleLastNameChange: (event: FormEvent<HTMLInputElement>) => void;
   handleAgeChange: (event: React.FormEvent<HTMLInputElement>) => void;
   handlePhotoUrlChange: (event: FormEvent<HTMLInputElement>) => void;
   handleCancelButtonClick: () => void;
-  handleAddContactButtonClick: () => void;
+  handleUpdateContactButtonClick: () => void;
 }
 
-const AddContactModal: React.FC<AddContactModalProps> = (props: AddContactModalProps) => {
+const UpdateContactModal: React.FC<AddContactModalProps> = (props: AddContactModalProps) => {
   return (
-    <Modal open={props.isAddContactModalOpen} size="tiny">
+    <Modal open={props.updateContactModalOpen} size="tiny">
       <Modal.Header>
-        Add New Contact
+        {props.updateActionType} New Contact
       </Modal.Header>
       <Modal.Content>
         <Form>
@@ -42,7 +43,7 @@ const AddContactModal: React.FC<AddContactModalProps> = (props: AddContactModalP
                       label='Age'
                       placeholder='Age'
                       type='number'
-                      min='0'
+                      min='1'
                       value={props.age}
                       onChange={props.handleAgeChange}
           />
@@ -60,13 +61,13 @@ const AddContactModal: React.FC<AddContactModalProps> = (props: AddContactModalP
         <Button color="red" onClick={props.handleCancelButtonClick} className={styles.CancelButton}>
           Cancel
         </Button>
-        <Button color="violet" onClick={props.handleAddContactButtonClick} className={styles.AddButton}
-                loading={props.isStoringContact}>
-          Add
+        <Button color="violet" onClick={props.handleUpdateContactButtonClick} className={styles.AddButton}
+                loading={props.isUpdatingContact}>
+          {props.updateActionType}
         </Button>
       </Modal.Actions>
     </Modal>
   )
 };
 
-export default AddContactModal;
+export default UpdateContactModal;

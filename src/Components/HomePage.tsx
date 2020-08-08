@@ -33,15 +33,14 @@ const HomePage: React.FC<HomePageProps> = (props: HomePageProps) => {
   return (
     <div className={styles.ContactContainer}>
       <Image src={logo} className={styles.Logo}/>
-      {
-        props.isFetchingContact ?
-          <LoadingComponent/>
-          :
-          <List selection divided verticalAlign='middle' className={styles.ContactList} size='big'>
-            {renderContactList()}
-          </List>
-      }
-      <Button circular color='violet' icon='add' className={styles.Float} onClick={props.handleAddButtonClick}/>
+      <List selection divided verticalAlign='middle' className={styles.ContactList} size='big'>
+        {
+          props.isFetchingContact ?
+            <LoadingComponent/> :
+            renderContactList()
+        }
+      </List>
+      <Button size='big' circular color='violet' icon='add user' className={styles.Float} onClick={props.handleAddButtonClick}/>
     </div>
   )
 };

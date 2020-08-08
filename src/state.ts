@@ -24,6 +24,7 @@ export interface SessionState {
   isStoringContact: boolean;
   isUpdatingContact: boolean;
   isDeletingContact: boolean;
+  isFetchingContactDetail: boolean;
 }
 
 export interface Contact {

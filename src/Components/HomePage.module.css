@@ -4,13 +4,34 @@
     }
 }
 
+@media (max-width: 499px) {
+    .Float {
+        position: fixed;
+        width: 7vh;
+        height: 7vh;
+        bottom: 5vh;
+        right: 5vh;
+        color: #FFF;
+    }
+}
+
+.Float {
+    height: 7vh;
+    width: 7vh;
+    margin: 4vh auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-content: center !important;
+    align-items: center !important;
+}
+
 .ContactContainer {
     margin: 0 auto;
     padding: 0 30px;
 }
 
 .Logo {
-    height: 30vh;
+    max-height: 30vh;
     padding: 50px 0;
     margin: 0 auto;
     display: flex;
@@ -19,17 +40,10 @@
     align-items: center;
 }
 
-.ContactList{
+.ContactList {
     overflow: auto;
     height: 50vh;
     padding-right: 20px !important;
 }
 
-.Float{
-    position: fixed;
-    width: 7vh;
-    height: 7vh;
-    bottom: 5vh;
-    right: 5vh;
-    color: #FFF;
-}
+
