@@ -18,9 +18,9 @@ const HomePage: React.FC<HomePageProps> = (props: HomePageProps) => {
 
     for (const contact of props.contacts) {
       contactList.push(
-        <List.Item onClick={() => props.handleContactClick(contact.id)}>
+        <List.Item onClick={() => props.handleContactClick(contact.id)} key={contact.id}>
           <Image avatar src={contact.photo}/>
-          <List.Content>
+          <List.Content className={styles.Name}>
             <List.Header>{contact.firstName} {contact.lastName}</List.Header>
           </List.Content>
         </List.Item>

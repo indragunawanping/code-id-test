@@ -2,6 +2,10 @@
     .ContactContainer {
         max-width: 50%;
     }
+
+    .ContactList {
+        margin-bottom: 7vh !important;
+    }
 }
 
 @media (max-width: 499px) {
@@ -9,10 +13,17 @@
         position: fixed;
         width: 7vh;
         height: 7vh;
-        bottom: 5vh;
+        bottom: 3vh;
         right: 5vh;
         color: #FFF;
     }
+}
+
+.Name {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 85%;
+    text-overflow: ellipsis;
 }
 
 .Float {
@@ -31,8 +42,9 @@
 }
 
 .Logo {
-    max-height: 30vh;
-    padding: 50px 0;
+    height: 20vh;
+    padding-top: 6vh;
+    padding-bottom: 3vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -41,7 +53,8 @@
 }
 
 .ContactList {
-    overflow: auto;
+    overflow-y: visible;
+    overflow-x: hidden;
     height: 50vh;
     padding-right: 20px !important;
 }
